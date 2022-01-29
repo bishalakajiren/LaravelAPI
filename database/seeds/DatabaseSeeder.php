@@ -1,0 +1,27 @@
+<?php
+
+use Illuminate\Database\Seeder;
+//use Faker\Factory as Faker;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Str;
+
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        // $this->call(UsersTableSeeder::class);
+        $faker = Faker::create();
+
+        foreach(range(1,5) as $index){
+            DB:: table('students')-> insert([
+                'StudentName'=>$faker->name,
+                'Email'=>$faker->email
+            ]);
+        }
+    }
+}
